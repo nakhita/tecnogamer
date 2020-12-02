@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/alta_publicacion.css" />
+
+  <!-- Para el file upload -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/css/jasny-bootstrap.min.css" />
+
+  <title>Publicación</title>
+</head>
+
+<body>
+  <div id="menu-contenedor"></div>
+  <div id="app">
+    <div class="titulo-alta">
+      <h3 id="titulo-h3">Alta Publicación</h3>
+    </div>
+    <form id="formulario" class="form-alta" onsubmit="return false;" method="post" enctype="multipart/form-data">
+      <div class="alert alert-success alert-dismissible collapse" role="alert">
+        <strong>La publicacion ha sido dada de alta con exito.</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <input type="hidden" name="publicacion-id" id="publicacion-id" />
+            <input class="controls" type="text" name="nombre" id="nombre" placeholder="Nombre de la Publicación" required />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-5">
+            <select class="controls" id="categoriaSelect" name="categoriaSelect" placeholder="Seleccione Categoría"></select>
+          </div>
+          <div class="col-md-5">
+            <select class="controls" id="etiquetaSelect" name="etiquetaSelect" placeholder="Seleccione Etiqueta"></select>
+          </div>
+          <div class="col-md-2">
+            <button class="controls" id="agregar-etiqueta" type="button">+</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div id="etiqueta-conjunto" class="etiquetas_conjunto">
+              <div id="etiqueta-contenedor" class="etiqueta-contenedor"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <textarea class="controls" name="descripcion" id="descripcion" placeholder="Ingrese Descripcion" required></textarea>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="controls fileinput fileinput-new" data-provides="fileinput">
+              <div id="publicacion-imagen-preview" class="fileinput-preview img-thumbnail" data-trigger="fileinput" style="width: 100%; height: 150px"></div>
+              <div class="botones-accion">
+                <span class="btn btn-outline-secondary btn-file">
+                  <span class="boton-file-upload fileinput-new">Seleccionar</span>
+                  <span class="boton-file-upload fileinput-exists">Cambiar</span>
+                  <input type="file" name="imagen" id="publicacion_imagen" />
+                </span>
+                <a href="#" class="boton-file-upload btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Borrar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div id="resultado" class="error"></div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <input id="confirmar" class="botons" type="submit" value="Confirmar" />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/js/jasny-bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/alta_publicacion.js"></script>
+</body>
+
+</html>

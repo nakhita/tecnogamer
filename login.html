@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/index.css">
+  <title>Registrarse</title>
+</head>
+
+<body>
+  <div class="centrar">
+    <div class="contenedor base-contenedor">
+      <a href="index.html">
+        <img src="img/logo-png.png" class="logo" alt="">
+      </a>
+      <form>
+        <div class="form-group">
+          <label for="usuario" class="texto-izq"><b>Usuario:</b></label>
+          <input type="text" class="form-control" placeholder="Ingresar usuario" id="usuario" required />
+        </div>
+        <div class="form-group ">
+          <label for="password" class="texto-izq"><b>Password:</b></label>
+          <input type="password" class="form-control" placeholder="Ingresar password" id="password" required minlength="5" maxlength="20" />
+        </div>
+        <div id="resultado" class="error texto-izq"></div>
+        <button id="ingresar" class="btn boton-celeste my-2 my-sm-0" type="button">Iniciar Sesión</button>
+      </form>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/login.js"></script>
+</body>

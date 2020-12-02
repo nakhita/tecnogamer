@@ -1,0 +1,55 @@
+body,
+html {
+  height: 100%;
+}
+
+.img-consola,
+.img-fondo,
+.img-computadora {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.img-consola {
+  background-image: url('../img/consolas.jpeg');
+  min-height: 500px;
+
+}
+
+.img-fondo {
+  background-image: url('../img/logo_fondo.jpg');
+  height: 100%;
+}
+
+.img-computadora {
+  background-image: url('../img/compu.png');
+  height: 100%;
+  opacity: 0.9;
+  position: relative;
+}
+
+.texto-transparente {
+  background-color: transparent;
+  font-size: 50px;
+  text-shadow: 6px 4px 5px rgba(0, 0, 0, 2);
+  color: #f7f7f7;
+}
+
+.texto-inicio {
+  color: #777;
+  background-color: white;
+  text-align: center;
+  padding: 50px 80px;
+  text-align: justify;
+}
+
+.fondo-transparente {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  color: white;
+  text-align: center;
+}

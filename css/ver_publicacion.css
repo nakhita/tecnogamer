@@ -1,0 +1,42 @@
+.autor {
+  color: black !important;
+  font-weight: bold;
+}
+
+.cad {
+  width: 700px;
+}
+
+.card-body {
+  border-radius: 10px;
+}
+
+.etiquetas {
+  margin-top: 10px;
+  font-size: 15px;
+  color: dimgray;
+}
+
+.titulo {
+  font-family: fantasy;
+  font-size: 50px;
+  margin-top: 30px;
+  margin-bottom: 80px;
+  color: #029dcc;
+  letter-spacing: 1px;
+}
+
+.descripcion {
+  margin-top: 50px;
+  margin-bottom: 15px;
+}
+
+.img {
+  max-width: auto;
+  max-height: 600px;
+  min-height: 300px;
+  max-width: 600px;
+  border-radius: 10px;
+  border: 2px solid #029dcc;
+  position: static;
+}

@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: 0, 0, 0, 0.2;
+}
+
+.controls {
+  width: 100%;
+  background: #24303c;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 16px;
+  border: 1px solid #1f53c5;
+  font-family: "calibri";
+  font-size: 18px;
+  color: white;
+}
+
+/*Agregue */
+
+.titulo-alta {
+  background-image: linear-gradient(to right, #ed6ea0 0%, #ec8c69 100%);
+  padding: 30px;
+  margin: auto;
+  font-family: "calibri";
+  text-align: center;
+  color: white;
+}
+
+.titulo-alta h3 {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.form-alta {
+  max-width: 800px;
+  padding: 30px;
+  margin: auto;
+  margin-top: 50px;
+  border-radius: 4px;
+  font-family: "calibri";
+  color: white;
+}
+
+.form-alta #Descripcion {
+  height: 100px;
+}
+
+#Descripcion::placeholder {
+  text-align: start;
+}
+
+.form-alta #Etiquetas_selec {
+  width: 100px;
+  margin-left: 5px;
+}
+
+.form-alta .botons {
+  width: 100%;
+  background: #24303c;
+  border: none;
+  padding: 12px;
+  color: white;
+  margin: 16px 0;
+  font-size: 16px;
+}
+
+.form-alta .botones-accion {
+  text-align: right;
+}
+
+.form-alta .etiqueta-contenedor {
+  padding-right: 10px;
+  padding-bottom: 5px;
+}
+
+.form-alta .etiquetas_conjunto {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.form-alta textarea {
+  resize: none;
+}
+
+.form-alta .boton-file-upload {
+  color: white;
+}
+
+.form-alta label.error {
+  color: red;
+}
+
+.form-alta #nombre {
+  margin-top: 0px;
+}
+
+.etiqueta-individual {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+/*-------*/
