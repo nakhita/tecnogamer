@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/all.css" />
+    <title>ABM Usuarios</title>
+  </head>
+
+  <body>
+    <div id="contenedor">
+      <div id="menu-contenedor"></div>
+      <div class="container p-3 my-3 border base-contenedor">
+        <div class="row">
+          <h1 class="col-lg-8 mar-top">ABM Usuarios</h1>
+          <br /><br />
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mt-2 mb-3">
+            <button id="boton-nuevo-usuario" type="button" class="btn btn-success col-md-2" data-toggle="modal" data-target="#modal-usuario">
+              Alta usuario
+            </button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-light table-hover">
+            <thead>
+              <tr>
+                <th width="10%">Usuario</th>
+                <th width="10%">Nombre</th>
+                <th width="15%">Apellido</th>
+                <th width="15%">Email</th>
+                <th width="10%">Rol</th>
+                <th width="10%">Estado</th>
+                <th>Accion</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-usuarios"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modal-usuario" tabindex="-1" role="dialog" aria-labelledby="modal-usuario-label" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-usuario-label">Usuario</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <form>
+                <input type="hidden" class="form-control" id="id-usuario" />
+                <div class="form-group row">
+                  <label for="usuario" class="col-sm-2 col-form-label">Usuario</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" id="usuario" placeholder="Ingrese Usuario" required />
+                  </div>
+                  <label for="password" class="col-sm-2 col-form-label">Password</label>
+                  <div class="col-sm-4">
+                    <input type="password" class="form-control" id="password" placeholder="******" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese Nombre" required />
+                  </div>
+                  <label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" id="apellido" placeholder="Ingrese Apellido" required />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="email" class="col-sm-2 col-form-label">Email</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" id="email" placeholder="Ingrese Email" required />
+                  </div>
+                  <label for="sexo" class="col-sm-2 col-form-label">Sexo</label>
+                  <div class="col-sm-4">
+                    <select class="form-control" id="sexo">
+                      <option value="">- Seleccione -</option>
+                      <option value="M">Masculino</option>
+                      <option value="F">Femenino</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="rol" class="col-sm-2 col-form-label">Rol</label>
+                  <div class="col-sm-4">
+                    <select class="form-control" id="rol">
+                      <option value="">- Seleccione -</option>
+                      <option value="1">Gamer</option>
+                      <option value="3">Creador de Contenido</option>
+                      <option value="2">Administrador</option>
+                    </select>
+                  </div>
+                  <label for="estado" class="col-sm-2 col-form-label">Estado</label>
+                  <div class="col-sm-4">
+                    <select class="form-control" id="estado">
+                      <option value="">- Seleccione -</option>
+                      <option value="1">Activo</option>
+                      <option value="2">Baneado</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="email" class="col-sm-2 col-form-label">Avatar:</label>
+                  <div class="col-sm-10">
+                    <input type="file" class="form-control" placeholder="Ingresar Avatar" id="avatar" />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="container">
+              <div class="row text-center">
+                <div class="offset-sm-4 col-sm-4 mb-1">
+                  <button id="boton-guardar" type="button" class="btn btn-primary col-sm-12">Guardar</button>
+                  <button id="boton-actualizar" type="button" class="btn btn-primary col-sm-12">Actualizar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/abm_usuarios.js"></script>
+  </body>
+</html>

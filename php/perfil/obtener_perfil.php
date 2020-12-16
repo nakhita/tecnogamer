@@ -15,12 +15,9 @@
 
     $statement->execute();
     if (!$statement) {
-        $mensaje = ['error'=>false,'mensaje'=>'Error al ejecutar la consulta'];
-        echo json_encode('Error al ejecutar la consulta');
+        echo 'Error al ejecutar la consulta';
     } else {
-      
         $perfil = $statement->fetchAll(PDO::FETCH_ASSOC);
-        $mensaje = ['error'=>true,'perfil'=>$perfil];
         echo json_encode($perfil);
     }
     $conexion = null;

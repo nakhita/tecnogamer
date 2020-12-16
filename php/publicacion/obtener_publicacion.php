@@ -8,7 +8,7 @@
 
     $conexion = obtenerConexion();
 
-    $query = "SELECT distinct p.id, p.titulo, p.descripcion, i.ruta_imagen, u.id as idAutor, u.usuario FROM publicacion p LEFT JOIN imagen i ON p.id = i.id_publicacion INNER JOIN usuario u ON p.id_usuario = u.id WHERE p.id = :id ";
+    $query = "SELECT DISTINCT p.id, p.titulo, p.descripcion, i.ruta_imagen, u.id as idAutor, u.usuario FROM publicacion p LEFT JOIN imagen i ON p.id = i.id_publicacion INNER JOIN usuario u ON p.id_usuario = u.id WHERE p.id = :id AND p.estado = 1 AND u.estado = 1 ";
 
     $statement=$conexion->prepare($query);
     $statement->bindparam("id", $id);

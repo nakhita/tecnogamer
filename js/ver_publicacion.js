@@ -1,5 +1,6 @@
 $(function () {
   var id_publicacion = 0;
+  var TIENE_PERMISO_CALIFICAR = false;
 
   var agregarEventos = function () {
     $("#me-gusta-boton").click(function () {
@@ -11,6 +12,55 @@ $(function () {
     });
     $("#boton-editar").click(editarPublicacion);
     $("#boton-eliminar").click(eliminarPublicacion);
+
+    $("#confirmar-reporte").click(confirmarReporte);
+
+    $("#boton-reportar").click(function () {
+      limpiarErrores();
+      $("#comentario-reporte").val("");
+    });
+
+    $(".radio-estrellas").click(function (e) {
+      var estrellas = $("input[name='radio-estrellas']:checked").val();
+      var formulario = {};
+      formulario.estrellas = estrellas;
+      formulario.id_publicacion = id_publicacion;
+      $.ajax({
+        url: "php/calificacion/calificar_publicacion.php",
+        type: "POST",
+        data: formulario,
+        dataType: "JSON",
+        success: function (resultado) {
+          if (resultado.correcto) {
+            cargarCalificacion();
+          } else {
+            console.error("Error al guardar calificacion");
+          }
+        },
+      });
+    });
+  };
+
+  var cargarCalificacion = function () {
+    $.ajax({
+      url: "php/calificacion/obtener_calificacion.php?id=" + id_publicacion,
+      type: "GET",
+      dataType: "JSON",
+      success: function (resultado) {
+        if (resultado.correcto) {
+          $("#calificacion-estrellas").text(resultado.puntaje);
+          if (TIENE_PERMISO_CALIFICAR) {
+            if (resultado.tieneCalificacion) {
+              $("#radio-group-estrellas").hide();
+            } else {
+              $("#radio-group-estrellas").show();
+            }
+          }
+        } else {
+          console.error("Error al cargar calificacion");
+        }
+      },
+    });
   };
 
   var editarPublicacion = function () {
@@ -75,7 +125,7 @@ $(function () {
                   $.getScript("js/boton_suscribirse.js");
                 }
               } else {
-                alert("No usuario");
+                $("#iduser").text("");
               }
             },
           });
@@ -145,6 +195,70 @@ $(function () {
     });
   };
 
+  var confirmarReporte = function () {
+    // validar comentario requerido
+    var selectorComentario = $("#comentario-reporte");
+    var comentario = selectorComentario.val();
+
+    var esValido = true;
+    limpiarErrores();
+    if (comentario == "") {
+      imprimirMensajeError(selectorComentario, "El comentario es requerido");
+      esValido = false;
+    }
+
+    if (esValido) {
+      guardarReporte();
+    }
+  };
+
+  var limpiarErrores = function () {
+    $(".mensaje-error").remove();
+    $(".input-error").removeClass("input-error");
+  };
+
+  var imprimirMensajeError = function (selector, texto) {
+    selector.addClass("input-error");
+    selector.after("<div class='mensaje-error'>" + texto + "</div>");
+  };
+
+  var guardarReporte = function () {
+    var datos = {};
+    datos.idPublicacion = id_publicacion;
+    datos.comentario = $("#comentario-reporte").val();
+    $.ajax({
+      url: "php/reporte/guardar_reporte.php",
+      type: "POST",
+      data: datos,
+      dataType: "JSON",
+      success: function (resultado) {
+        $(".modal").modal("hide");
+        $("html, body").animate({ scrollTop: 0 }, 500);
+        if (resultado.correcto) {
+          obtenerTieneReporte();
+          $("#alerta").show();
+        } else {
+          $("#alerta-error").show();
+        }
+      },
+    });
+  };
+
+  var obtenerTieneReporte = function () {
+    $.ajax({
+      url: "php/reporte/obtener_tiene_reporte.php?idPublicacion=" + id_publicacion,
+      type: "GET",
+      dataType: "JSON",
+      success: function (resultado) {
+        if (resultado.tieneReporte) {
+          $("#boton-reportar").prop("disabled", true);
+        } else {
+          $("#boton-reportar").prop("disabled", false);
+        }
+      },
+    });
+  };
+
   var mostrarBotonesAccion = function () {
     if ($("#idautor").text() == $("#iduser").text()) {
       $("#botones-accion").show();
@@ -157,8 +271,38 @@ $(function () {
     $("#resultado").text(texto);
   };
 
+  var cargarPermisos = function () {
+    $.ajax({
+      url: "php/permisos/obtener_permisos.php",
+      type: "GET",
+      dataType: "JSON",
+      success: function (permisos) {
+        TIENE_PERMISO_CALIFICAR = mostrarElemento(permisos, "#radio-group-estrellas", "CALIFICAR_PUBLICACION");
+        mostrarElemento(permisos, "#me-gusta-boton", "CALIFICAR_PUBLICACION");
+        mostrarElemento(permisos, "#boton-reportar", "REPORTAR_PUBLICACION");
+        mostrarElemento(permisos, "#botones-accion", "ABM_PUBLICACION");
+
+        cargarCalificacion();
+      },
+    });
+  };
+
+  var mostrarElemento = function (permisos, elemento, nombre) {
+    var tienePermiso = false;
+    $(elemento).css("display", "none");
+    $.each(permisos, function (ix, permiso) {
+      if (permiso.nombre == nombre) {
+        $(elemento).css("display", "inline-block");
+        tienePermiso = true;
+      }
+    });
+    return tienePermiso;
+  };
+
   var inicializar = function () {
+    cargarPermisos();
     cargarPublicacion();
+    obtenerTieneReporte();
     agregarEventos();
   };
 

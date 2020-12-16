@@ -1,28 +1,35 @@
 $(function () {
-
   var agregarEventos = function () {
-    $("#ingresar").click(function () {
-      var login = {};
-      login.usuario = $("#usuario").val();
-      login.password = $("#password").val();
-      if (validarUsuario(login)) {
-        $.ajax({
-          url: "php/log/login.php",
-          type: "POST",
-          dataType: "JSON",
-          data: login,
-          success: function (resultado) {
-            if (resultado.correcto) {
-              setTimeout(function () {
-                window.location.href = "ver_publicaciones.html";
-              }, 1000);
-            } else {
-              imprimirError(resultado.mensaje);
-            }
-          },
-        });
-      }
+    $("#formulario").submit(function (e) {
+      e.preventDefault();
+      ingresar();
     });
+
+    $("#ingresar").click(ingresar);
+  };
+
+
+  var ingresar = function () {
+    var login = {};
+    login.usuario = $("#usuario").val();
+    login.password = $("#password").val();
+    if (validarUsuario(login)) {
+      $.ajax({
+        url: "php/log/login.php",
+        type: "POST",
+        dataType: "JSON",
+        data: login,
+        success: function (resultado) {
+          if (resultado.correcto) {
+            setTimeout(function () {
+              window.location.href = "ver_publicaciones.html";
+            }, 1000);
+          } else {
+            imprimirError(resultado.mensaje);
+          }
+        },
+      });
+    }
   };
 
   var inicializar = function () {
@@ -55,11 +62,6 @@ $(function () {
 
   var imprimirError = function (texto) {
     $("#resultado").text(texto);
-  };
-
-  var esValidoAlfabetico = function (nombre) {
-    let pattern = /^[A-Za-z ]+$/g;
-    return pattern.test(nombre);
   };
 
   var esValidoAlfanumerico = function (nombre) {

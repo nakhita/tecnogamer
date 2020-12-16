@@ -32,7 +32,7 @@
 
     $conexion = obtenerConexion();
 
-    $query = "SELECT distinct p.id, p.titulo, i.ruta_imagen, u.usuario FROM publicacion p INNER JOIN publicacion_etiqueta pe ON p.id = pe.id_publicacion INNER JOIN etiqueta e ON e.id = pe.id_etiqueta LEFT JOIN imagen i ON p.id = i.id_publicacion INNER JOIN usuario u ON p.id_usuario = u.id WHERE p.titulo LIKE :titulo ";
+    $query = "SELECT DISTINCT p.id, p.titulo, i.ruta_imagen, u.usuario FROM publicacion p INNER JOIN publicacion_etiqueta pe ON p.id = pe.id_publicacion INNER JOIN etiqueta e ON e.id = pe.id_etiqueta LEFT JOIN imagen i ON p.id = i.id_publicacion INNER JOIN usuario u ON p.id_usuario = u.id WHERE p.titulo LIKE :titulo AND p.estado = 1 AND u.estado = 1 ";
 
     if ($hayEtiqueta) {
         $query = $query . " AND pe.id_etiqueta = :id_etiqueta";

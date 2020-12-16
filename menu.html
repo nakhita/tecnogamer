@@ -7,28 +7,39 @@
       <li class="nav-item">
         <a id="publicaciones" class="nav-link" href="ver_publicaciones.html">Publicaciones</a>
       </li>
-      <li class="nav-items">
-        <a id="crear-publicacion" class="nav-link" href="alta_publicacion.html">Crear publicacion</a>
-      </li>
-      <li class="nav-items">
-        <a id="miperfil" class="nav-link">Mi Perfil</a>
-      </li>
-      <li class="nav-items">
-        <a id="suscriciones" class="nav-link" href="lista_suscriciones.html">Mis Suscriciones</a>
-      </li>
-      <li class="nav-items">
-        <a id="abm-etiquetas" class="nav-link" href="abm_etiquetas.html">ABM Etiquetas</a>
-      </li>
-      <li class="nav-items">
-        <span id="id-user"></span>
-      </li>
     </ul>
-    <div id="logout" class="my-2 my-lg-0">
-      <button id="registrar-link" class="btn btn-secondary my-2 my-sm-0" type="button">Registrarse</button>
-      <button id="loguear-link" class="btn boton-celeste my-2 my-sm-0" type="button">Ingresar</button>
+    <button id="logout" class="btn btn-secondary my-2 my-sm-0" type="button"><i class="fas fa-bars"></i></button>
+    <div id="notificacion" class="contenedor-notificacion" style="float: right">
+      <button id="btn-notificacion" href="#" class="dropbtn btn btn-secondary notification">
+        <span><i class="fas fa-bell"></i></span>
+        <span id="canti-notificaciones" class="badge"></span>
+      </button>
+      <div id="lista-notificaciones" class="nover dropdown-content"></div>
     </div>
-    <div id="login" class="my-2 my-lg-0">
-      <button id="logout-link" class="btn boton-celeste my-2 my-sm-0" type="button">Cerrar Sessión</button>
-    </div>
+    <button id="btn-menu" class="btn btn-secondary my-2 my-sm-0" type="button"><i class="fas fa-bars"></i></button>
   </nav>
+  <div id="menu-login-registrar" class="sidenav">
+    <a id="btn-menu-cerrar-login-registrar" href="#" class="closebtn">&times;</a>
+    <a id="registrar-link" class="nav-link" href="registrar.html"><i class="fas fa-user"></i> Registrarse</a>
+    <a id="loguear-link" class="nav-link" href="login.html"><i class="fas fa-sign-in-alt"></i> Ingresar</a>
+  </div>
+  <div id="menu-login" class="sidenav">
+    <a id="btn-menu-cerrar" href="#" class="closebtn">&times;</a>
+    <a id="miperfil" class="nav-link"><i class="fas fa-user"></i> Mi Perfil</a>
+    <a id="crear-publicacion" class="nav-link" href="alta_publicacion.html"><i class="fas fa-plus-square"></i> Crear publicacion</a>
+    <a id="suscriciones" class="nav-link" href="lista_suscriciones.html"><i class="fas fa-heart"></i> Mis Suscriciones</a>
+    <a id="abm-etiquetas" class="nav-link" href="abm_etiquetas.html"><i class="fas fa-tag"></i> Etiquetas</a>
+    <a id="abm-categorias" class="nav-link" href="abm_categorias.html"><i class="fas fa-gamepad"></i> Categorias</a>
+    <a id="solicitud-categoria" class="nav-link" href="solicitud_categoria.html"><i class="fas fa-tags"></i> Solicitud de <br />
+      Categoria</a>
+    <a id="abm-usuarios" class="nav-link" href="abm_usuarios.html"><i class="fas fa-users-cog"></i> Usuarios</a>
+    <a id="ver-solicitudes-categoria" class="nav-link" href="ver_solicitudes_categoria.html"><i class="fas fa-tags"></i> Ver Solicitudes <br />
+      Categoria
+    </a>
+    <a id="ver-solicitudes-cc" class="nav-link" href="ver_solicitudes_cc.html"><i class="fas fa-user-clock"></i> Ver Solicitudes <br>Creador Contenido</a>
+    <a id="solicitud-cc" class="nav-link" href="solicitud_cc.html"><i class="fas fa-mug-hot"></i> Solicitud de CC</a>
+    <a id="ver-reportes" class="nav-link" href="ver_reportes.html"><i class="fas fa-bullhorn"></i> Ver Reportes</a>
+    <br />
+    <a id="logout-link" class="logout" type="button">Cerrar Sessión <i class="fas fa-sign-out-alt"></i></a>
+  </div>
 </div>

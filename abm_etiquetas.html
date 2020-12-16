@@ -1,61 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/index.css" />
-    <title>ABM Etiquetas</title>
-  </head>
 
-  <body>
-    <div id="contenedor">
-      <div id="menu-contenedor"></div>
-      <form class="container p-3 my-3 border base-contenedor">
-        <div class="row">
-          <h1 class="col-lg-8 mar-top">Etiquetas</h1>
-          <a href="index.html" class="centrar col-lg-4"><img class="logo" src="img/logo-png.png" alt="logo" /></a>
-        </div>
-        <div class="row align-items-end">
-          <div class="col-md-4 mb-3">
-            <label for="categoria">Categoria:</label>
-            <select class="form-control" id="categoria-select"></select>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="nombre">Etiqueta:</label>
-            <input type="hidden" id="etiqueta-id" />
-            <input type="text" class="form-control" placeholder="Ingresar etiqueta" id="etiqueta" required />
-          </div>
-          <div class="col-md-4 mb-3">
-            <button id="boton-guardar" type="button" class="btn btn-success">Guardar</button>
-            <button id="boton-actualizar" type="button" class="btn btn-primary">Actualizar</button>
-            <button id="boton-limpiar" type="button" class="btn btn-danger">Limpiar</button>
-          </div>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/all.css">
+  <title>ABM Etiquetas</title>
+</head>
 
-        <div id="resultado" class="error"></div>
-        <table class="table table-light table-hover">
-          <thead>
-            <tr>
-              <th width="35%">Categoria</th>
-              <th width="35%">Etiqueta</th>
-              <th>Accion</th>
-            </tr>
-          </thead>
-          <tbody id="tabla-etiquetas">
-            <tr>
-              <td>Prueba</td>
-              <td>Prueba</td>
-              <td>Botones de modificar y eliminar</td>
-            </tr>
-          </tbody>
-        </table>
-      </form>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="js/menu.js"></script>
-    <script src="js/abm_etiquetas.js"></script>
-  </body>
+<body>
+  <div id="contenedor">
+    <div id="menu-contenedor"></div>
+    <form class="container p-3 my-3 border base-contenedor">
+      <div class="row">
+        <h1 class="col-lg-8 mar-top">Etiquetas</h1><br><br>
+      </div>
+      <div class="row align-items-end">
+        <div class="col-md-4 mb-3">
+          <label for="categoria">Categoria:</label>
+          <select class="form-control" id="categoria-select"></select>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="nombre">Etiqueta:</label>
+          <input type="hidden" id="etiqueta-id" />
+          <input type="text" class="form-control" placeholder="Ingresar etiqueta" id="etiqueta" required />
+        </div>
+        <div class="col-md-4 mb-3">
+          <button id="boton-guardar" type="button" class="btn btn-success">Guardar</button>
+          <button id="boton-actualizar" type="button" class="btn btn-primary">Actualizar</button>
+          <button id="boton-limpiar" type="button" class="btn btn-danger">Limpiar</button>
+        </div>
+      </div>
+
+      <div id="resultado" class="error"></div>
+      <table class="table table-light table-hover">
+        <thead>
+          <tr>
+            <th width="35%">Categoria</th>
+            <th width="35%">Etiqueta</th>
+            <th>Accion</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-etiquetas">
+          <tr>
+            <td>Prueba</td>
+            <td>Prueba</td>
+            <td>Botones de modificar y eliminar</td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/abm_etiquetas.js"></script>
+</body>
+
 </html>

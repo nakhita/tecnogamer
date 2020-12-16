@@ -3,7 +3,7 @@ $(function () {
 
   var cargarUsuario = function (usuario) {
     $("#user-name").attr("href", "ver_publicaciones.html?autor=" + usuario);
-  }
+  };
   var cargarPerfil = function () {
     var queryString = window.location.search;
     var urlParams = new URLSearchParams(queryString);
@@ -29,15 +29,15 @@ $(function () {
             type: "GET",
             dataType: "JSON",
             success: function (respuesta) {
-              if (!respuesta.error) {
-                if (respuesta.perfil > 0) {
-                  $("#iduser").text(respuesta);
-                  if (respuesta.perfil != perfil.id) {
-                    $.getScript("js/boton_suscribirse.js");
-                  }
+              if (respuesta > 0) {
+                $("#iduser").text(respuesta);
+                if (respuesta != perfil.id) {
+                  $.getScript("js/boton_suscribirse.js");
+                } else {
+                  $("#editar").attr("href", "editar_perfil.html?id=" + respuesta);
                 }
               } else {
-                alert("Error al obtener usuario");
+                window.location.href = "index.html";
               }
             },
           });

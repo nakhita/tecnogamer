@@ -11,7 +11,7 @@
         $mensajeError = "El id de suscricion no existe";
     } else {
         $idsus = $_REQUEST['idSus'];
-        $valido = validarSuscricion($idsus,$iduser);
+        $valido = validarSuscricion($idsus, $iduser);
     }
 
     if ($valido) {
@@ -29,7 +29,8 @@
         echo json_encode($respuesta);
     }
 
-    function validarSuscricion($idsus,$iduser){
+    function validarSuscricion($idsus, $iduser)
+    {
         $conexion=obtenerConexion();
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $stm=$conexion->prepare("SELECT * FROM suscripcion WHERE id=:idsus and id_usuario=:iduser");
@@ -45,10 +46,11 @@
         }
     }
 
-    function removerSuscripcion($idsus){
+    function removerSuscripcion($idsus)
+    {
         $conexion=obtenerConexion();
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stm=$conexion->prepare("DELETE FROM suscripcion WHERE id=:idsus");
+        $stm=$conexion->prepare("UPDATE suscripcion SET estado = 2 WHERE id=:idsus");
         $stm->bindParam(':idsus', $idsus);
         $stm->execute();
         $contador=$stm->rowCount();

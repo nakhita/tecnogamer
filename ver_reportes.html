@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/all.css" />
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/ver_reportes.css" />
+  <title>Ver reportes</title>
+</head>
+
+<body>
+  <div id="menu-contenedor"></div>
+  <div class="container mar-top">
+    <div id="alerta" class="alert alert-dismissible collapse" role="alert">
+      <strong id="mensaje"></strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="container p-3 my-3 border base-contenedor">
+      <div class="row">
+        <h1 class="centrar col-lg-8 mar-top">Ver reportes</h1>
+      </div>
+      <hr />
+      <div class="row">
+        <table class="table table-light table-hover table-responsive-sm">
+          <thead>
+            <tr>
+              <th width="10%">Fecha</th>
+              <th>Titulo</th>
+              <th width="20%">Autor</th>
+              <th width="20%"></th>
+            </tr>
+          </thead>
+          <tbody id="tabla-reportes"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modal-comentarios" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="modal-reporte-label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-reporte-label">Reportes</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <table class="table table-light table-hover table-responsive-sm">
+                <thead>
+                  <tr>
+                    <th width="25%">Fecha</th>
+                    <th width="20%">Reportador</th>
+                    <th>Comentarios</th>
+                  </tr>
+                </thead>
+                <tbody id="tabla-comentarios"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal-atender" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="modal-reporte-atender-label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-reporte-atender-label">Reportes</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div>Elija una accion a tomar</div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="row">
+            <button id="boton-borrar-reporte" type="button" class="btn btn-primary col-md-12 mb-1">Cerrar reportes</button>
+            <button id="boton-eliminar" type="button" class="btn btn-warning col-md-12 mb-1">Eliminar publicacion</button>
+            <button id="boton-eliminar-banear" type="button" class="btn btn-danger col-md-12 mb-1">Eliminar publicacion y banear usuario</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/ver_reportes.js"></script>
+</body>
+
+</html>

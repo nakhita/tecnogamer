@@ -1,20 +1,7 @@
 $(function () {
-  var paginasRestringidas = [
-    "ver_publicacion.html",
-    "ver_publicaciones.html",
-    "perfil.html",
-    "alta_publicacion.html",
-    "abm_etiquetas.html",
-    "lista_suscriciones.html",
-  ];
+  var paginasRestringidas = ["perfil.html", "alta_publicacion.html", "abm_etiquetas.html", "lista_suscriciones.html", "abm_categorias.html"];
 
   var agregarEventos = function () {
-    $("#registrar-link").click(function (e) {
-      window.location.href = "registrar.html";
-    });
-    $("#loguear-link").click(function (e) {
-      window.location.href = "login.html";
-    });
     $("#logout-link").click(function (e) {
       $.ajax({
         url: "php/obtener_usuario_echo.php",
@@ -38,6 +25,27 @@ $(function () {
         },
       });
     });
+    $("#logout").click(function (e) {
+      $("#menu-login-registrar").css("width", "250px");
+      $("#menu-login-registrar").css("display", "block");
+    });
+    $("#btn-menu-cerrar-login-registrar").click(function (e) {
+      $("#menu-login-registrar").css("width", "0");
+    });
+    $("#btn-menu").click(function (e) {
+      $("#menu-login").css("width", "250px");
+      $("#menu-login").css("display", "block");
+    });
+    $("#btn-menu-cerrar").click(function (e) {
+      $("#menu-login").css("width", "0");
+    });
+    $("#btn-notificacion").click(function (e) {
+      if ($("#lista-notificaciones").hasClass("nover")) {
+        $("#lista-notificaciones").removeClass("nover").addClass("ver");
+      } else {
+        $("#lista-notificaciones").removeClass("ver").addClass("nover");
+      }
+    });
   };
 
   var cargarPerfil = function () {
@@ -53,26 +61,26 @@ $(function () {
     });
   };
 
-  var imprimirError = function (mensaje) {
-    alert("Error no tiene permisos");
-  };
-
   var cargarPermisos = function () {
     $.ajax({
       url: "php/permisos/obtener_permisos.php",
       type: "GET",
       dataType: "JSON",
-      success: function (respuesta) {
-        if (!respuesta.error) {
-          validarPermisos(respuesta.permisos);
-          mostrarMenu(respuesta.permisos, "#miperfil");
-          mostrarMenu(respuesta.permisos, "#publicaciones");
-          mostrarMenu(respuesta.permisos, "#crear-publicacion");
-          mostrarMenu(respuesta.permisos, "#abm-etiquetas");
-          mostrarMenu(respuesta.permisos, "#suscriciones");
-        } else {
-          imprimirError(respuesta.mensaje);
-        }
+      success: function (permisos) {
+        mostrarMenu(permisos, "#miperfil");
+        mostrarMenu(permisos, "#crear-publicacion");
+        mostrarMenu(permisos, "#abm-etiquetas");
+        mostrarMenu(permisos, "#abm-categorias");
+        mostrarMenu(permisos, "#suscriciones");
+        mostrarMenu(permisos, "#solicitud-categoria");
+        mostrarMenu(permisos, "#abm-usuarios");
+        mostrarMenu(permisos, "#ver-solicitudes-categoria");
+        mostrarMenu(permisos, "#ver-reportes");
+        mostrarMenu(permisos, "#solicitud-cc");
+        mostrarMenu(permisos, "#ver-solicitudes-cc");
+        mostrarMenu(permisos, "#editar-perfil-menu-link");
+
+        validarPermisos(permisos);
       },
     });
   };
@@ -81,7 +89,7 @@ $(function () {
     $(menu).css("display", "none");
     $.each(permisos, function (ix, permiso) {
       if (permiso.menu_id == menu) {
-        $(menu).css("display", "inline-block");
+        $(menu).css("display", "block");
       }
     });
   };
@@ -102,6 +110,59 @@ $(function () {
     }
   };
 
+  var actualizarNotificacion = function (notificacion) {
+    $.ajax({
+      url: "php/notificacion/actualizar_notificacion.php?id=" + notificacion.id + "&visto=1",
+      type: "PUT",
+      dataType: "JSON",
+      success: function (respuesta) {
+        if (respuesta.correcto) {
+          window.location.href = "ver_publicacion.html?id=" + notificacion.id_publicacion;
+        }
+      },
+    });
+  };
+
+  var obtenerNotificaciones = function () {
+    $.ajax({
+      url: "php/notificacion/obtener_notificaciones.php",
+      type: "GET",
+      dataType: "JSON",
+      success: function (respuesta) {
+        if (respuesta.correcto && respuesta.notificaciones && respuesta.notificaciones.length > 0) {
+          var notificaciones = respuesta.notificaciones;
+          $("#canti-notificaciones").text(notificaciones.length);
+
+          $("#lista-notificaciones").empty();
+          $.each(notificaciones, function (ix, notificacion) {
+            var aNotificacion = $("<a></a>").attr("class", "noti noti-novista").attr("href", "#");
+
+            aNotificacion.click(function () {
+              actualizarNotificacion(notificacion);
+            });
+
+            var div = $("<div></div>");
+
+            var spanTitulo = $("<span></span>")
+              .attr("id", "titulo-noti-" + notificacion.id)
+              .attr("class", "titulo-noti")
+              .text(notificacion.titulo);
+
+            var spanAutor = $("<span></span>").text(notificacion.usuario);
+            var pAutor = $("<p></p>").attr("class", "cuerpo-noti").text("Por : ").append(spanAutor);
+
+            div.append(spanTitulo);
+            div.append(pAutor);
+
+            aNotificacion.append(div);
+
+            $("#lista-notificaciones").append(aNotificacion);
+          });
+        }
+      },
+    });
+  };
+
   var inicializar = function () {
     $("#menu-contenedor").load("./menu.html", function () {
       $.ajax({
@@ -110,19 +171,21 @@ $(function () {
         dataType: "JSON",
         success: function (respuesta) {
           if (respuesta > 0) {
-            $("#inicio").css("display", "inline-block");
-            $("#logout-link").css("display", "inline-block");
+            $("#btn-menu").css("display", "inline-block");
             $("#registrar-link").css("display", "none");
             $("#loguear-link").css("display", "none");
+            $("#logout").css("display", "none");
+            $("#notificacion").css("display", "inline-block");
             $("#id-user").css("display", "none");
             $("#id-user").text(respuesta);
           } else {
-            $("#inicio").css("display", "none");
-            $("#logout-link").css("display", "none");
+            $("#btn-menu").css("display", "none");
             $("#id-user").css("display", "none");
             $("#id-user").text(respuesta);
+            $("#notificacion").css("display", "none");
             $("#registrar-link").css("display", "inline-block");
             $("#loguear-link").css("display", "inline-block");
+            $("#logout").css("display", "inline-block");
           }
 
           cargarPermisos();
@@ -130,6 +193,7 @@ $(function () {
       });
       agregarEventos();
       cargarPerfil();
+      obtenerNotificaciones();
     });
   };
 

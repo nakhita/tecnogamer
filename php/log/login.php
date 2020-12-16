@@ -20,7 +20,7 @@
     if ($valido) {
         if (!existeUsuario($usuario, $password)) {
             $valido = false;
-            $mensajeError = "El usuario o contraseña ingresado no es correcto";
+            $mensajeError = "El usuario o la contraseña no son correctos";
         }
     }
  
@@ -45,15 +45,15 @@
         $conexion = obtenerConexion();
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $stm=$conexion->prepare("SELECT * FROM usuario WHERE usuario=:usuario AND password=:password AND estado=1");
+        $stm=$conexion->prepare("SELECT password FROM usuario WHERE usuario=:usuario AND estado=1");
         $stm->bindParam('usuario', $usuario);
-        $stm->bindParam('password', $password);
         $stm->execute();
-        $contador=$stm->rowCount();
+        $id=$stm->fetchColumn(0);
         $conexion=null;
 
-        if ($contador > 0) {
-            return true;
+        if ($id) {
+            $pass_has = password_verify($password, $id);
+            return $pass_has;
         } else {
             return false;
         }

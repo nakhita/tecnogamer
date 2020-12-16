@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/ver_reportes.css" />
+    <title>Ver solicitudes categoria</title>
+  </head>
+
+  <body>
+    <div id="menu-contenedor"></div>
+    <div class="container mar-top">
+      <div id="alerta" class="alert alert-success alert-dismissible collapse" role="alert">
+        <strong id="mensaje"></strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="container p-3 my-3 border base-contenedor">
+        <div class="row">
+          <h1 class="centrar col-lg-8 mar-top">Ver solicitudes de categoria</h1>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="table-responsive">
+            <table class="table table-light table-hover table-responsive-sm">
+              <thead>
+                <tr>
+                  <th width="10%">Fecha</th>
+                  <th width="10%">Usuario</th>
+                  <th width="15%">Categoria</th>
+                  <th>Etiquetas</th>
+                  <th width="25%"></th>
+                </tr>
+              </thead>
+              <tbody id="tabla-solicitudes"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="modal-comentarios"
+      tabindex="-1"
+      data-backdrop="static"
+      role="dialog"
+      aria-labelledby="modal-comentarios-label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-comentarios-label">Comentarios</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p id="p-comentarios"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="modal-atender"
+      tabindex="-1"
+      data-backdrop="static"
+      role="dialog"
+      aria-labelledby="modal-reporte-atender-label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-reporte-atender-label">Atender solicitud</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div id="alerta-atender-error" class="alert alert-danger alert-dismissible collapse" role="alert">
+                <strong id="mensaje-error"></strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">Desea dar de alta la siguiente solicitud?</div>
+                <div class="col-sm-12">Categoria: <strong id="categoria-nombre-modal"></strong></div>
+                <div class="col-sm-12">Etiquetas: <strong id="etiqueta-nombre-modal"></strong></div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-6 mb-1">
+                  <button id="boton-aprobar-solicitud" type="button" class="btn btn-primary col-sm-12">Aprobar solicitud</button>
+                </div>
+                <div class="col-sm-6 mb-1">
+                  <button id="boton-cerrar-solicitud" type="button" class="btn btn-danger col-sm-12">Cerrar solicitud</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/ver_solicitudes_categoria.js"></script>
+  </body>
+</html>

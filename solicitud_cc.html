@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/alta_publicacion.css" />
+  <link rel="stylesheet" href="css/all.css">
+  <title>Solicitud Para CC</title>
+</head>
+
+<body>
+  <div id="menu-contenedor"></div>
+  <div id="app">
+    <div class="titulo-alta">
+      <h3 id="titulo-h3">Solicitud Para Creador de Contenido</h3>
+    </div>
+    <form id="formulario" class="form-alta" onsubmit="return false;" method="post" enctype="multipart/form-data">
+      <div class="alert alert-success alert-dismissible collapse" role="alert">
+        <strong>La publicacion ha sido dada de alta con exito.</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h3>
+              <i class="celeste fas fa-angle-double-right"></i>¿Tienes experiencia como creador de contenido?
+            </h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div id="checks" class="checks">
+              <div id="si" class="form-check">
+                <input class="form-check-input position-static" type="radio" id="check-si" name="experiencia" value="1" aria-label="...">
+                <label for="check-si">SI</label>
+              </div>
+
+              <div id="si" class="form-check"><input class="form-check-input position-static" type="radio" id="check-no" name="experiencia" value="0" aria-label="..." checked>
+                <label for="check-no">NO</label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h3><i class="celeste fas fa-angle-double-right"></i> Cuentanos en pocas palabras ¿Por qué te gustaría ser Creador de contenido? En caso de haber marcado que tienes experiencia cuentanos sobre ello.</h3>
+            <textarea class="controls" name="motivo" id="motivo" placeholder="Ingrese Motivo" required></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div id="resultado" class="error"></div>
+          </div>
+        </div>
+        <span id="termino" class="form-check">
+          <input class="form-check-input position-static" type="checkbox" id="termino-check" value="option1" aria-label="..."> Acepto los <a href="https://support.google.com/youtube/topic/9223153">terminos y condiciones</a> para los creadores.
+        </span>
+        <div class="row">
+          <div class="col-md-12">
+            <input id="solicitar" class="botons" type="submit" value="SOLICITAR" />
+          </div>
+        </div>
+      </div>
+    </form>
+    <div id="estado-solicitud" class="alert alert-warning">
+      <h3>SOLICITUD PARA CREADOR DE CONTENIDO</h3>
+      <strong>Estado:</strong> En espera.
+      <div>
+        <br>
+        <p>Los administradores atenderán su solicitud enviada el <span id="fecha"></span> , con las respuestas que se mostrarán a continuación lo antes posible. Recuerde que si su solitud es rechadaza puede volver a aplicar para creador de contenido. Animos! </p>
+        <p><strong>Experiencia:</strong><span id="res-experiencia"></span></p>
+        <p><strong>Motivo:</strong><span id="res-motivo"></span></p>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/js/jasny-bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/solicitud_cc.js"></script>
+</body>
+
+</html>

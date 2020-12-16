@@ -1,53 +1,143 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/ver_publicacion.css" />
+    <title>Ver publicacion</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="css/all.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/index.css" />
-  <link rel="stylesheet" href="css/ver_publicacion.css" />
-  <title>Ver publicacion</title>
-</head>
-
-<body>
-  <div id="contenedor">
-    <div id="menu-contenedor"></div>
-    <div class="container p-3 my-3 border base-contenedor">
-      <div id="publicaciones-contenedor" class="row mt-3">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-body">
-              <h1 id="titulo" class="titulo centrar"></h1>
-              <p class="card-text">Autor: <a id="autor" class="autor"></a></p>
-              <span id="idautor"></span>
-              <span id="iduser"></span>
-              <div id="boton-sus-contenedor"></div>
-              <p class="card-text descripcion" id="descripcion"></p>
-              <div class="centrar">
-                <img id="imagen" class="img centrar" src="" alt="" />
+  <body>
+    <div id="contenedor">
+      <div id="menu-contenedor"></div>
+      <div class="container p-3 my-3 border base-contenedor">
+        <div id="alerta" class="alert alert-success alert-dismissible collapse" role="alert">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          Se registro su reporte
+        </div>
+        <div id="alerta-error" class="alert alert-danger alert-dismissible collapse" role="alert">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          Hubo un error al registrar su reporte
+        </div>
+        <div id="publicaciones-contenedor" class="row mt-3">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <h1 id="titulo" class="titulo centrar"></h1>
+                <p class="card-text">Autor: <a id="autor" class="autor"></a></p>
+                <span id="idautor"></span>
+                <span id="iduser"></span>
+                <div id="boton-sus-contenedor"></div>
+                <p class="card-text descripcion" id="descripcion"></p>
+                <div class="centrar">
+                  <img id="imagen" class="img centrar" src="" alt="" />
+                </div>
+                <p class="card-text etiquetas" id="etiquetas"></p>
+                <div class="row">
+                  <div class="col-md-2">
+                    <button id="me-gusta-boton" type="button" class="btn boton-celeste col-md-12">
+                      Me gusta <span id="me-gusta-contador" class="badge badge-light"></span>
+                    </button>
+                  </div>
+                  <div id="botones-accion" class="col-md-10 texto-derecha">
+                    <button id="boton-editar" type="button" class="btn btn-primary col-md-2">Editar</button>
+                    <button id="boton-eliminar" type="button" class="btn btn-danger col-md-2">Eliminar</button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2 mt-1">Calificacion: <span class="fa fa-star checked"></span><span id="calificacion-estrellas"></span></div>
+                  <div class="col-md-6 mt-1">
+                    <div id="radio-group-estrellas" class="form-check">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input radio-estrellas" type="radio" name="radio-estrellas" id="estrella1" value="1" />
+                        <label class="form-check-label" for="estrella1">1</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input radio-estrellas" type="radio" name="radio-estrellas" id="estrella2" value="2" />
+                        <label class="form-check-label" for="estrella2">2</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input radio-estrellas" type="radio" name="radio-estrellas" id="estrella3" value="3" />
+                        <label class="form-check-label" for="estrella3">3</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input radio-estrellas" type="radio" name="radio-estrellas" id="estrella4" value="4" />
+                        <label class="form-check-label" for="estrella4">4</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input radio-estrellas" type="radio" name="radio-estrellas" id="estrella5" value="5" />
+                        <label class="form-check-label" for="estrella5">5</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 texto-derecha mt-1">
+                    <button id="boton-reportar" type="button" class="btn btn-warning col-md-4" data-toggle="modal" data-target="#modal-reporte">
+                      Reportar
+                    </button>
+                  </div>
+                </div>
               </div>
-              <p class="card-text etiquetas" id="etiquetas"></p>
-              <button id="me-gusta-boton" type="button" class="btn boton-celeste">
-                Me gusta <span id="me-gusta-contador" class="badge badge-light"></span>
-              </button>
             </div>
+            <!-- 
+            <div class="card">
+              <div class="card-header"><h3 id="comentario-titulo">Comentarios</h3></div>
+              <div class="card-body">
+                <div class="comentarios-body">
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <blockquote class="blockquote mb-0">
+                        <input type="text" />
+                        <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                      </blockquote>
+                    </li>
+                    <li class="list-group-item">Second item</li>
+                    <li class="list-group-item">Third item</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            -->
+          </div>
+        </div>
+        <div id="resultado" class="error"></div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal-reporte" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="modal-reporte-label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-reporte-label">Reportar Publicacion</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12">
+                  <label>Comentario: </label>
+                  <input type="text" class="form-control" id="comentario-reporte" name="comentario-reporte" required maxlength="200" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="confirmar-reporte">Reportar</button>
           </div>
         </div>
       </div>
-      <div id="resultado" class="error"></div>
-      <div id="botones-accion" class="texto-derecha mt-2">
-        <button id="boton-editar" type="button" class="btn btn-primary mr-2">Editar</button>
-        <button id="boton-eliminar" type="button" class="btn btn-danger">Eliminar</button>
-      </div>
     </div>
-  </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="js/menu.js"></script>
-  <script src="js/ver_publicacion.js"></script>
-</body>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/ver_publicacion.js"></script>
+  </body>
 </html>

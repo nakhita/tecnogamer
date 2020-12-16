@@ -89,7 +89,8 @@
             $valido = false;
             $mensajeError = "El usuario ingresado ya existe";
         } else {
-            $idUsuario = insertarUsuario($nombre, $apellido, $email, $usuario, $password, $sexo, $rutaImagen);
+            $pass_hash=password_hash($password,PASSWORD_DEFAULT);
+            $idUsuario = insertarUsuario($nombre, $apellido, $email, $usuario, $pass_hash, $sexo);
             
             insertarImagen($idUsuario, $rutaImagen);
         }

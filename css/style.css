@@ -29,6 +29,11 @@ body {
   width: 130px;
 }
 
+.celeste {
+  color: #01bbf3;
+  margin-right: 5px;
+}
+
 .boton-card {
   width: auto;
 }
@@ -71,4 +76,155 @@ body {
 
 .texto-derecha {
   text-align: right;
+}
+
+.mensaje-error {
+  color: red !important;
+}
+
+.input-error {
+  border-color: red !important;
+}
+
+.ocultar {
+  display: none;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  white-space: nowrap;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  transition: 0.3s;
+}
+
+.logout {
+  text-align: end;
+}
+
+.notification {
+  background-color: #555;
+  color: white;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.notification:hover {
+  background: #01bbf3;
+}
+
+.notification .badge {
+  position: absolute;
+  top: -1px;
+  right: -11px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  font-size: 15px;
+}
+
+.contenedor-notificacion {
+  position: relative;
+  display: inline-block;
+}
+
+.ver {
+  display: block !important;
+}
+
+.nover {
+  display: none !important;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: -20px;
+  background-color: #f9f9f9;
+  width: 315px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  margin-top: 5px;
+}
+
+.titulo-noti {
+  color: #01bbf3;
+  font-weight: bold;
+}
+
+.noti-novista {
+  border-left: 10px solid #2eb9ce;
+  color: #01bbf3;
+}
+
+noti {}
+
+.dropdown-content a {
+  color: black !important;
+  padding: 2px 10px;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 2px;
+}
+
+#tabla-solicitudes {
+  color: black !important;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.checks {
+  font-size: 30px;
+}
+
+#estado-solicitud {
+  margin: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+.fa-star.checked {
+  color: orange;
 }

@@ -14,12 +14,9 @@
     $statement->execute();
     
     if (!$statement) {
-        $mensaje = ['error'=>true,'mensaje'=>'Error al ejecutar la consulta'];
-        echo json_encode('Error al ejecutar la consulta');
+        echo 'Error al ejecutar la consulta';
     } else {
-        
         $permisos = $statement->fetchAll(PDO::FETCH_ASSOC);
-        $mensaje = ['error'=>false,'permisos'=>$permisos];
-        echo json_encode($mensaje);
+        echo json_encode($permisos);
     }
     $conexion = null;

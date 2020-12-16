@@ -41,7 +41,7 @@
     {
         $conexion=obtenerConexion();
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stm=$conexion->prepare("SELECT * FROM suscripcion WHERE id_usuario=:idusuario AND id_autor=:idautor");
+        $stm=$conexion->prepare("SELECT * FROM suscripcion WHERE id_usuario=:idusuario AND id_autor=:idautor AND estado = 1");
         $stm->bindParam('idusuario', $idusuario);
         $stm->bindParam('idautor', $idautor);
         $stm->execute();
@@ -76,7 +76,7 @@
     {
         $conexion=obtenerConexion();
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stm=$conexion->prepare("INSERT INTO suscripcion (id_usuario, id_autor, fecha) VALUES (:idusuario, :idautor, NOW())");
+        $stm=$conexion->prepare("INSERT INTO suscripcion (id_usuario, id_autor, fecha, estado) VALUES (:idusuario, :idautor, NOW(), 1)");
         $stm->bindParam(':idusuario', $idusuario);
         $stm->bindParam(':idautor', $idautor);
         $stm->execute();

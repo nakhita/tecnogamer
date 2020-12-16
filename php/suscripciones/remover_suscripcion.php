@@ -38,7 +38,7 @@
     {
         $conexion=obtenerConexion();
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stm=$conexion->prepare("SELECT * FROM suscripcion WHERE id_usuario=:idusuario AND id_autor=:idautor");
+        $stm=$conexion->prepare("SELECT * FROM suscripcion WHERE id_usuario=:idusuario AND id_autor=:idautor AND estado = 1");
         $stm->bindParam('idusuario', $idusuario);
         $stm->bindParam('idautor', $idautor);
         $stm->execute();
@@ -73,7 +73,7 @@
     {
         $conexion=obtenerConexion();
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stm=$conexion->prepare("DELETE FROM suscripcion WHERE id_usuario=:idusuario AND id_autor=:idautor");
+        $stm=$conexion->prepare("UPDATE suscripcion SET estado = 2 WHERE id_usuario=:idusuario AND id_autor=:idautor");
         $stm->bindParam(':idusuario', $idusuario);
         $stm->bindParam(':idautor', $idautor);
         $stm->execute();

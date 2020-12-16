@@ -1,4 +1,4 @@
-<?php 
+<?php
   include("../conexion_bd.php");
   include("../obtener_usuario.php");
   
@@ -6,8 +6,8 @@
 
   $conexion = obtenerConexion();
   $id= obtenerUsuario();
-  $statement=$conexion->prepare("SELECT  a.ruta_imagen as ruta, u.usuario as autor,u.id as idAutor, s.id as idSus FROM suscripcion s INNER JOIN usuario u on s.id_autor = u.id INNER JOIN avatar a on u.id = a.id_usuario where s.id_usuario= :id");
-  $statement->bindparam("id", $id);  
+  $statement=$conexion->prepare("SELECT a.ruta_imagen as ruta, u.usuario as autor,u.id as idAutor, s.id as idSus FROM suscripcion s INNER JOIN usuario u on s.id_autor = u.id INNER JOIN avatar a on u.id = a.id_usuario where s.id_usuario= :id AND u.estado = 1 AND s.estado = 1 ");
+  $statement->bindparam("id", $id);
   $statement->execute();
   if (!$statement) {
       echo 'Error al ejecutar la consulta';

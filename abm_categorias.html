@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/all.css">
+  <title>ABM Categorias</title>
+</head>
+
+<body>
+  <div id="contenedor">
+    <div id="menu-contenedor"></div>
+    <form class="container p-3 my-3 border base-contenedor">
+      <div class="row">
+        <h1 class="col-lg-8 mar-top">Categorias</h1>
+        <br><br>
+      </div>
+      <div class="row align-items-end">
+        <div class="col-md-4 mb-3">
+          <label for="categoria">Categoria:</label>
+          <input type="hidden" id="categoria-id" />
+          <input type="text" class="form-control" placeholder="Ingresar categoria" id="categoria" required />
+        </div>
+        <div class="col-md-4 mb-3">
+          <button id="boton-guardar" type="button" class="btn btn-success">Guardar</button>
+          <button id="boton-actualizar" type="button" class="btn btn-primary">Actualizar</button>
+          <button id="boton-limpiar" type="button" class="btn btn-danger">Limpiar</button>
+        </div>
+      </div>
+
+      <div id="resultado" class="error"></div>
+      <table class="table table-light table-hover">
+        <thead>
+          <tr>
+            <th width="70%">Categoria</th>
+            <th>Accion</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-categorias"></tbody>
+      </table>
+    </form>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/abm_categorias.js"></script>
+</body>
+
+</html>

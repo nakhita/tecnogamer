@@ -16,9 +16,6 @@
 
 
     if ($valido) {
-        eliminarMegustaPublicacion($idPublicacion);
-        eliminarImagenPublicacion($idPublicacion);
-        eliminarPublicacionEtiqueta($idPublicacion);
         $eliminados = eliminarPublicacion($idPublicacion);
 
         if ($eliminados > 0) {
@@ -40,52 +37,7 @@
         $conexion = obtenerConexion();
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $statement=$conexion->prepare("DELETE FROM publicacion WHERE id = :id");
-        $statement->bindparam("id", $idPublicacion);
-        $statement->execute();
-        $contador=$statement->rowCount();
-
-        $conexion=null;
-
-        return $contador;
-    }
-
-    function eliminarPublicacionEtiqueta($idPublicacion)
-    {
-        $conexion = obtenerConexion();
-        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        $statement=$conexion->prepare("DELETE FROM publicacion_etiqueta WHERE id_publicacion = :id");
-        $statement->bindparam("id", $idPublicacion);
-        $statement->execute();
-        $contador=$statement->rowCount();
-
-        $conexion=null;
-
-        return $contador;
-    }
-
-    function eliminarImagenPublicacion($idPublicacion)
-    {
-        $conexion = obtenerConexion();
-        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        $statement=$conexion->prepare("DELETE FROM imagen WHERE id_publicacion = :id");
-        $statement->bindparam("id", $idPublicacion);
-        $statement->execute();
-        $contador=$statement->rowCount();
-
-        $conexion=null;
-
-        return $contador;
-    }
-
-    function eliminarMegustaPublicacion($idPublicacion)
-    {
-        $conexion = obtenerConexion();
-        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        $statement=$conexion->prepare("DELETE FROM megusta WHERE id_publicacion = :id");
+        $statement=$conexion->prepare("UPDATE publicacion SET estado = 2 WHERE id = :id");
         $statement->bindparam("id", $idPublicacion);
         $statement->execute();
         $contador=$statement->rowCount();
